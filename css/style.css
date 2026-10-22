@@ -184,6 +184,11 @@ body{min-width:0}
 .social a i{font-size:15px}
 .social a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.8}
 .social a svg .social-dot{fill:currentColor;stroke:none}
+.social a.github-link{color:#181717}
+.social a.instagram-link{color:#e4405f}
+.social a.email-link{color:#ea4335}
+.social a.whatsapp-link{color:#25d366}
+.social a.whatsapp-link svg{fill:currentColor;stroke:none}
 .skill-logo.colored{color:initial}
 .skill>span:not(.skill-logo){min-width:0}
 @media(max-width:850px){
