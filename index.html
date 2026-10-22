@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="hero-visual">
-      <div class="portrait"><img src="images/profile.jpg" alt="Foto Hanif"><div class="photo-fallback"><strong>H</strong><span>Foto Profil</span><small>Ganti dengan foto kamu</small></div></div>
+      <div class="portrait"><img src="images/pp.jpeg" alt="Foto Hanif"><div class="photo-fallback"><strong>H</strong><span>Foto Profil</span><small>Ganti dengan foto kamu</small></div></div>
       <div class="note">Small steps<br>to big dreams<div class="underline"></div></div>
     </div>
   </div>
@@ -183,8 +183,16 @@
     <div id="contact" class="contact">
       <label>CONTACT</label><h2>Let's Connect</h2><p>Tertarik untuk bekerja sama, berdiskusi, atau sekadar menyapa? Jangan ragu untuk menghubungi saya!</p>
       <div class="contact-info"><span>✉</span> hanifmaulanafadhila@gmail.com<br><span>☎</span> +6281252747233<br><span>⌖</span> Jember, Jawa Timur</div>
-      <form id="form"><label>Nama<input required placeholder="Masukkan nama"></label><label>Email<input required type="email" placeholder="Masukkan email"></label><label>Pesan<textarea required placeholder="Tulis pesan..."></textarea></label><button class="btn primary">➤ &nbsp;Kirim Pesan</button></form>
-      <p id="msg"></p>
+      <form id="form" action="https://formsubmit.co/ajax/hanifmaulanafadhila@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Pesan baru dari portofolio Hanif">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+        <label>Nama<input name="name" required maxlength="100" placeholder="Masukkan nama"></label>
+        <label>Email<input name="email" required type="email" maxlength="254" placeholder="Masukkan email"></label>
+        <label>Pesan<textarea name="message" required maxlength="5000" placeholder="Tulis pesan..."></textarea></label>
+        <button class="btn primary" type="submit">➤ &nbsp;Kirim Pesan</button>
+      </form>
+      <p id="msg" role="status" aria-live="polite"></p>
     </div>
   </div>
 </section>

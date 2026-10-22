@@ -30,4 +30,28 @@ window.addEventListener("scroll",()=>{
  document.querySelectorAll("#nav a").forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+current));
 });
 topBtn.onclick=()=>scrollTo({top:0,behavior:"smooth"});
-document.getElementById("form").onsubmit=e=>{e.preventDefault();document.getElementById("msg").textContent="Terima kasih! Pesan kamu sudah diterima.";e.target.reset()};
+const contactForm=document.getElementById("form");
+const contactMessage=document.getElementById("msg");
+contactForm.addEventListener("submit",async event=>{
+ event.preventDefault();
+ const submitButton=contactForm.querySelector('button[type="submit"]');
+ submitButton.disabled=true;
+ contactMessage.textContent="Mengirim pesan...";
+ contactMessage.dataset.state="sending";
+ try{
+  const response=await fetch(contactForm.action,{method:"POST",body:new FormData(contactForm),headers:{Accept:"application/json"}});
+  const result=await response.json();
+  if(!response.ok||(result.success!=="true"&&result.success!==true)){
+   throw new Error(result.message||"Pesan belum berhasil dikirim.");
+  }
+  contactMessage.textContent="Terima kasih! Pesan kamu berhasil dikirim.";
+  contactMessage.dataset.state="success";
+  contactForm.reset();
+ }catch(error){
+  console.error("Pengiriman formulir kontak gagal:",error);
+  contactMessage.textContent="Pesan gagal dikirim. Silakan coba lagi atau hubungi saya melalui email.";
+  contactMessage.dataset.state="error";
+ }finally{
+  submitButton.disabled=false;
+ }
+});
